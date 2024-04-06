@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://838ftkgxtcuk"]
+
+[ext_resource type="Script" path="res://Codes/Pieces.gd" id="1_8enbm"]
+[ext_resource type="Texture2D" uid="uid://bsdoe3pe7f5vu" path="res://icon.svg" id="1_uooy0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cpuht"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n8u7m"]
+radius = 50.0
+height = 150.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lx6x5"]
+size = Vector2(25, 25)
+
+[node name="Pieces" type="RigidBody2D"]
+scale = Vector2(0.2, 0.2)
+physics_material_override = SubResource("PhysicsMaterial_cpuht")
+script = ExtResource("1_8enbm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_uooy0")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+scale = Vector2(0.2, 0.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("CapsuleShape2D_n8u7m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lx6x5")
